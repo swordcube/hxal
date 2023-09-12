@@ -5,7 +5,7 @@ package al;
  * @author Leather128
  */
 @:keep
-@:buildXml('<include name="${haxelib:hxopenal}/include.xml" />')
+@:buildXml('<include name="${haxelib:hxal}/include.xml" />')
 @:include('AL/alc.h')
 @:include('AL/alc.h')
 extern class ALC {
