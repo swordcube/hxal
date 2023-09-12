@@ -7,6 +7,7 @@ package al;
 @:keep
 @:buildXml('<include name="${haxelib:hxopenal}/include.xml" />')
 @:include('AL/alc.h')
+@:include('AL/alc.h')
 extern class ALC {
 	// defines //
 	static inline final FREQUENCY:Int = 0x1007;
@@ -82,7 +83,7 @@ extern class ALC {
 	static function getIntegerv(device:Device, parameter:Int, size:Int, ?values:cpp.Pointer<Int>):Void;
 
 	@:native('alcCaptureOpenDevice')
-	static function captureOpenDevice(deviceName:cpp.ConstCharStar, frequency:cpp.UInt32, format:Int, bufferSize:Int):Device;
+	static function captureOpenDevice(deviceName:cpp.ConstCharStar, frequency:UInt, format:Int, bufferSize:Int):Device;
 
 	@:native('alcCaptureCloseDevice')
 	static function captureCloseDevice(device:Device):Bool;
@@ -99,10 +100,12 @@ extern class ALC {
 
 @:native('ALCdevice')
 @:include('AL/alc.h')
+@:structAccess
 extern class ALCdevice {}
 
 @:native('ALCcontext')
 @:include('AL/alc.h')
+@:structAccess
 extern class ALCcontext {}
 
 typedef Device = cpp.Pointer<ALCdevice>;

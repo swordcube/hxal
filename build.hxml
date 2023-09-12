@@ -1,0 +1,6 @@
+-D HXCPP_CHECK_POINTER
+-D HXCPP_STACK_LINE
+-D analyzer-optimize
+
+-cp src
+-cpp bin/cpp

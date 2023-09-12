@@ -7,6 +7,7 @@ package al;
 @:keep
 @:buildXml('<include name="${haxelib:hxopenal}/include.xml" />')
 @:include('AL/al.h')
+@:include('AL/al.h')
 extern class AL {
 	// defines //
 	static inline final NONE:Int = 0;
@@ -172,13 +173,11 @@ extern class AL {
 	@:native('alGetListeneriv')
 	static function getListeneriv(parameter:Int, values:cpp.Pointer<Array<Int>>):Void;
 
-	static inline function genSources(n:Int, sources:Array<Int>):Void {
-		untyped __cpp__('alGenSources({0}, (unsigned int*)&({1}[0]))', n, sources);
-	}
+	@:native('alGenSources')
+	static function genSources(n:Int, source:cpp.Pointer<cpp.UInt32>):Void;
 
-	static inline function deleteSources(n:Int, source:cpp.UInt32):Void {
-		HxAL.deleteSources(n, source);
-	}
+	@:native('alDeleteSources')
+	static function deleteSources(n:Int, source:cpp.Pointer<cpp.UInt32>):Void;
 
 	@:native('alIsSource')
 	static function isSource(source:cpp.UInt32):Bool;
@@ -249,23 +248,17 @@ extern class AL {
 	@:native('alSourceUnqueueBuffers')
 	static function sourceUnqueueBuffers(source:cpp.UInt32, nb:Int, buffers:cpp.Pointer<cpp.UInt32>):Void;
 
-	static inline function genBuffers(n:Int, buffers:Array<Int>):Void {
-		untyped __cpp__('alGenBuffers({0}, (unsigned int*)&({1}[0]))', n, buffers);
-	}
+	@:native('alGenBuffers')
+	static function genBuffers(n:Int, buffer:cpp.Pointer<cpp.UInt32>):Void;
 
-	static inline function deleteBuffers(n:Int, buffer:cpp.UInt32):Void {
-		HxAL.deleteBuffers(n, buffer);
-	}
+	@:native('alDeleteBuffers')
+	static function deleteBuffers(n:Int, buffer:cpp.Pointer<cpp.UInt32>):Void;
 
 	@:native('alIsBuffer')
 	static function isBuffer(buffer:cpp.UInt32):Bool;
 
 	@:native('alBufferData')
-	private static function alBufferData(buffer:Int, format:Int, data:cpp.Pointer<cpp.UInt8>, size:Int, sampleRate:Int):Void;
-
-	static inline function bufferData(buffer:Int, format:Int, data:haxe.io.BytesData, size:Int, sampleRate:Int):Void {
-		alBufferData(buffer, format, cpp.Pointer.arrayElem(data, 0), size, sampleRate);
-	}
+	static function bufferData(buffer:cpp.UInt32, format:Int, data:cpp.Pointer<cpp.Void>, size:cpp.UInt64, sampleRate:Int):Void;
 
 	@:native('alBufferf')
 	static function bufferf(buffer:cpp.UInt32, parameter:Int, value:Single):Void;
@@ -304,13 +297,4 @@ extern class AL {
 	static function getBufferiv(buffer:cpp.UInt32, parameter:Int, values:cpp.Pointer<Array<Int>>):Void;
 }
 
-@:include('AL/hxal.h')
-extern class HxAL {
-	@:native('deleteSourceHelper')
-	static function deleteSources(n:Int, source:cpp.UInt32):Void;
-
-	@:native('deleteBufferHelper')
-	static function deleteBuffers(n:Int, buffer:cpp.UInt32):Void;
-}
-
-typedef Double = cpp.Float64;
+typedef Double = Float;
