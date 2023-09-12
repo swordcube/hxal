@@ -1,6 +1,6 @@
 {
-	"name": "hxopenal",
-	"url": "https://github.com/Leather128/hxopenal.git",
+	"name": "hxal",
+	"url": "https://github.com/swordcube/hxal.git",
 	"license": "GPL",
 	"tags": [
 		"sound",
@@ -15,7 +15,7 @@
 	"classPath": "src/",
 	"releasenote": "Initial release.",
 	"contributors": [
-		"Leather128"
+		"swordcube"
 	],
 	"dependencies": {
 		"hxcpp": ""
