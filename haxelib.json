@@ -11,9 +11,9 @@
 		"bindings"
 	],
 	"description": "This library provides bindings for using the OpenAL (specifically OpenAL Soft) audio library in a Haxe project.",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"classPath": "src/",
-	"releasenote": "Initial release.",
+	"releasenote": "Fix Windows compile issue",
 	"contributors": [
 		"swordcube"
 	],
