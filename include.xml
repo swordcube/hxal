@@ -9,9 +9,6 @@
 		<compilerflag value="-I${haxelib:hxal}/vendor/openal/include" />
 	</files>
 
-	<copyFile name="OpenAL32.dll" from="${haxelib:hxal}/vendor/openal/lib/windows/x64" toolId="exe"
-		overwrite="true" if="windows" />
-
 	<target id="haxe">
 		<section if="windows">
 			<lib name="${haxelib:hxal}/vendor/openal/lib/windows/x64/OpenAL32.lib" />
